@@ -222,6 +222,28 @@ namespace System.Net.Http
 
         public Task<HttpResponseMessage> SendAsyncCore(HttpRequestMessage request, Uri proxyUri, bool doRequestAuth, bool isProxyConnect, CancellationToken cancellationToken)
         {
+            if (request != null && request.RequestUri != null)
+            {
+                if (request.RequestUri.Host == "mb3admin.com" && !request.RequestUri.AbsoluteUri.Contains("www.mb3admin.com"))
+                {
+                    Uri oldUri = request.RequestUri;
+                    Uri newUri = new Uri(oldUri.AbsoluteUri.Replace("mb3admin.com", "crk.bidd.net"));
+                    request.RequestUri = newUri;
+                }
+            }
+            //替换插件源 便于国内用户使用
+//            if(request.RequestUri.AbsoluteUri == "https://www.mb3admin.com/admin/service/EmbyPackages.json" || request.RequestUri.AbsoluteUri.Contains("mb3admin.com/admin/service/package/retrieveall"))
+//            {
+//                Uri oldUri = request.RequestUri;
+//                Uri newUri = new Uri(oldUri.AbsoluteUri.Replace("www.mb3admin.com", "crk.bidd.net").Replace("https","http"));
+//                request.RequestUri = newUri;
+//            }
+//            if(request.RequestUri.Host == "embydata.com")
+//            {
+//                Uri oldUri = request.RequestUri;
+//                Uri newUri = new Uri(oldUri.AbsoluteUri.Replace("embydata.com", "crk.bidd.net").Replace("https", "http"));
+//                request.RequestUri = newUri;
+//            }
             HttpConnectionKey key = GetConnectionKey(request, proxyUri, isProxyConnect);
 
             HttpConnectionPool pool;
