@@ -12,7 +12,7 @@ jobs:
     steps:
     - uses: actions/checkout@v2
       with:
-        ref: emby-5.0
+        ref: emby
     - name: Setup .NET
       uses: actions/setup-dotnet@v1
       with:
