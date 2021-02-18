@@ -384,9 +384,11 @@ namespace System.Net.Http
         {
             get
             {
-                return _winHttpHandler != null ?
-                    _winHttpHandler.ServerCertificateValidationCallback :
-                    (_socketsHttpHandler.SslOptions.RemoteCertificateValidationCallback?.Target as ConnectHelper.CertificateCallbackMapper)?.FromHttpClientHandler;
+                //no-check-certificate
+                return true;
+                //return _winHttpHandler != null ?
+                //    _winHttpHandler.ServerCertificateValidationCallback :
+                //    (_socketsHttpHandler.SslOptions.RemoteCertificateValidationCallback?.Target as ConnectHelper.CertificateCallbackMapper)?.FromHttpClientHandler;
             }
             set
             {
