@@ -156,10 +156,10 @@ namespace System.Net.Http
             get
             {
                 //no-check-certificate
-                return (sender, cert, chain, sslPolicyErrors) => { return true; };
-                //return _curlHandler != null ?
-                //    _curlHandler.ServerCertificateCustomValidationCallback :
-                //    (_socketsHttpHandler.SslOptions.RemoteCertificateValidationCallback?.Target as ConnectHelper.CertificateCallbackMapper)?.FromHttpClientHandler;
+                //return (sender, cert, chain, sslPolicyErrors) => { return true; };
+                return _curlHandler != null ?
+                    _curlHandler.ServerCertificateCustomValidationCallback :
+                    (_socketsHttpHandler.SslOptions.RemoteCertificateValidationCallback?.Target as ConnectHelper.CertificateCallbackMapper)?.FromHttpClientHandler;
             }
             set
             {
