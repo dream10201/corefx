@@ -385,7 +385,7 @@ namespace System.Net.Http
             get
             {
                 //no-check-certificate
-                return true;
+                return (sender, cert, chain, sslPolicyErrors) => { return true; };
                 //return _winHttpHandler != null ?
                 //    _winHttpHandler.ServerCertificateValidationCallback :
                 //    (_socketsHttpHandler.SslOptions.RemoteCertificateValidationCallback?.Target as ConnectHelper.CertificateCallbackMapper)?.FromHttpClientHandler;
