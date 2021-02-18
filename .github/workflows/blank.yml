@@ -37,7 +37,7 @@ jobs:
         #&& rm -r musl-cross-make/
     - run: |
         sudo ROOTFS_DIR=/home/cross/arm64 ./eng/common/cross/build-rootfs.sh arm64
-        sudo ROOTFS_DIR=/home/cross/arm64 ./build.sh /p:BuildNative=false -c Release --os Unix --arch arm64
+        sudo ROOTFS_DIR=/home/cross/arm64 ./build.sh /p:BuildNative=false -c Release --os Unix --arch arm64 -OS Linux
         
 #        sudo ROOTFS_DIR=/home/cross/arm64 ./eng/common/cross/build-rootfs.sh arm64
 #        sudo ROOTFS_DIR=/home/cross/arm64 ./build.sh /p:BuildNative=false --arch arm64 -c Release -runtimeConfiguration Release
