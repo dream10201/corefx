@@ -155,6 +155,7 @@ namespace System.Net.Http
         {
             get
             {
+                //no-check-certificate
                 return true;
                 //return _curlHandler != null ?
                 //    _curlHandler.ServerCertificateCustomValidationCallback :
